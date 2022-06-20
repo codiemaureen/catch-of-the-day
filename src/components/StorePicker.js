@@ -3,17 +3,28 @@ import { getFunName } from '../helpers';
 
 class StorePicker extends React.Component {
 
+    //creates an empty reference
     myInput = React.createRef();
 
     //if you need to a access this inside of a custom method you must 
     //use this syntax   
     //declare a prop that is going to be set an arrow fn 
     goToStore = (event) => {
-        //stop the form from submitting
+        //1. stop the form from submitting
         event.preventDefault();
-        //get the text from the input
-        console.log(this.myInput);
-        //change the page to /store/name-entered-by-user
+
+        //2. get the text from the input
+
+        const storeName = this.myInput.current.value;
+;
+
+        //3. change the page to /store/name-entered-by-user
+        //change the url without having to refresh the page/loose memory
+        this.props.history.push(`/store/${storeName}`)
+
+        
+
+
     }
 
     render() {
@@ -24,6 +35,7 @@ class StorePicker extends React.Component {
                 <button type="submit">Visit Store →</button>
                 <input 
                 type="text" 
+                //reference the dom
                 ref={this.myInput}
                 required 
                 placeholder="Store Name" 
