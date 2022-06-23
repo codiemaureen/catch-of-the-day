@@ -2,7 +2,7 @@ import Rebase from 're-base';
 import firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/firestore';
-import 'firebase/datastore';
+import 'firebase/database';
 
 
 const firebaseApp = firebase.initializeApp({
@@ -14,4 +14,9 @@ const firebaseApp = firebase.initializeApp({
 
 const base = Rebase.createClass(firebaseApp.database())
 
-export default firebaseApp;
+
+//This is a named export
+export { firebaseApp };
+
+//This is a default export;
+export default base;
